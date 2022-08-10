@@ -14,7 +14,7 @@
 				});
 			});
 		})
-		.catch(err => console.error(err));
+		.catch(err => alert(JSON.stringify(err)));
 
 		// Reload the page after the serviceWorker controller has changed to the latest version
 		navigator.serviceWorker.addEventListener("controllerchange", event => {
@@ -34,12 +34,12 @@
 					},
 					audio: false
 				},
-				detector = canDetect && new TextDetector(),
-				worker = !canDetect && Tesseract.createWorker({
+				detector = undefined,//canDetect && new TextDetector(),
+				worker = /*!*/canDetect && Tesseract.createWorker({
 					workerPath: "tesseract/worker.min.js",
 					langPath: "tesseract/langs",
 					corePath: "tesseract/tesseract-core.wasm.js",
-					logger: m => alert(m)
+					logger: m => alert(JSON.stringify(m))
 				});
 	let track;
 
