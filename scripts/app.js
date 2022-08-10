@@ -4,7 +4,7 @@
 	if (location.protocol.includes("http")) {
 		update_btn.addEventListener("click", () => iSW.postMessage({ action: "skipWaiting" }));
 
-		navigator.serviceWorker.register("scripts/sw.js", { scope: location.pathname })
+		navigator.serviceWorker.register("sw.js", { scope: location.pathname })
 		.then(reg => {
 			reg.addEventListener("updatefound", () => {
 				iSW = reg.installing;
@@ -50,7 +50,6 @@ debugger;
 		await worker.loadLanguage("eng");
 		load_meter.value++;
 		await worker.initialize("eng");
-		load_meter.value++;
 		wait.close();
 	}
 
