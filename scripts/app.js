@@ -23,7 +23,7 @@
 			refreshingPage = true;
 		});
 	}
-debugger;
+
 	const canDetect = !!window.TextDetector,
 				constraints = {
 					video: {
