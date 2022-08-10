@@ -24,7 +24,7 @@ dialog::backdrop {
 }
 
 #torch {
-  background: no-repeat center center url("../images/light.svg");
+  background: no-repeat center center url("../images/light.svg"), white;
   border-radius: 10px;
   font-size: x-large;
   font-weight: 900;
@@ -36,8 +36,8 @@ dialog::backdrop {
   width: 39px;
 }
 
-.light-off {
-  background-color: rgba(0,0,0,0.5) !important;
+#torch.light-off {
+  background-color: black;
 }
 
 #output {
