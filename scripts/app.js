@@ -84,6 +84,8 @@
 
 	cam.addEventListener("play", event => {
 		cam.style.marginLeft = `calc(50vw - ${cam.videoWidth / 2}px)`;
+		canvas.width = cam.videoWidth;
+		canvas.height = cam.videoHeight;
 	}, { once: true });
 
 	cam.addEventListener("click", scan);
@@ -109,7 +111,9 @@
 			}).catch(err => alert(err));
 		}
 		if (worker) {
-			const { data: { text } } = await worker.recognize(cam);
+			// const { data: { text } } = await worker.recognize(cam);
+			canvas.getContext('2d').drawImage(cam, 0, 0, c.width, c.height);
+			const { data: { text } } = await worker.recognize(canvas);
 			if (!text) return;
 			output.textContent = text;
 			cam.pause();
