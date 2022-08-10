@@ -126,11 +126,11 @@
 			wait.showModal();
 			worker.recognize(canvas)
 			.then(data => {
+				wait.close();
 				const text = data.text;
 				if (!text) return;
 				output.textContent = text;
 				cam.pause();
-				wait.close();
 				output_dialog.showModal();
 			});
 		}
