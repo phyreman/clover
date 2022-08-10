@@ -39,7 +39,10 @@
 					workerPath: "tesseract/worker.min.js",
 					langPath: "tesseract/langs",
 					corePath: "tesseract/tesseract-core.wasm.js",
-					logger: m => console.log(m)
+					logger: p => {
+						wait_status.textContent = p.status;
+						load_meter.value = p.progress;
+					}
 				}),
 				ctx = canvas.getContext("2d");
 	let track;
@@ -121,10 +124,6 @@
 			cam.pause();
 			wait.showModal();
 			worker.recognize(canvas)
-			.progress(p => {
-				wait_status.textContent = p.status;
-				load_meter.value = p.progress;
-			})
 			.then(data => {
 				const text = data.text;
 				if (!text) return;
