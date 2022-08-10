@@ -27,9 +27,9 @@
 	const canDetect = !!window.TextDetector,
 				constraints = {
 					video: {
-						aspectRatio: 9 / 16,
+						aspectRatio: 9/16,
 						facingMode: "environment",
-						height: screen.height,
+						width: screen.width,
 						zoom: 1
 					},
 					audio: false
@@ -39,8 +39,9 @@
 					workerPath: "tesseract/worker.min.js",
 					langPath: "tesseract/langs",
 					corePath: "tesseract/tesseract-core.wasm.js",
-					logger: m => alert(JSON.stringify(m))
-				});
+					logger: m => console.log(m)
+				}),
+				ctx = canvas.getContext("2d");
 	let track;
 
 	if (worker) {
@@ -112,8 +113,9 @@
 		}
 		if (worker) {
 			// const { data: { text } } = await worker.recognize(cam);
-			canvas.getContext('2d').drawImage(cam, 0, 0, c.width, c.height);
+			ctx.drawImage(cam, 0, 0, canvas.width, canvas.height);
 			const { data: { text } } = await worker.recognize(canvas);
+			// const { data: { text } } = await worker.recognize(canvas.toDataURL("image/png"));
 			if (!text) return;
 			output.textContent = text;
 			cam.pause();
