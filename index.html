@@ -6,8 +6,8 @@
     <meta rel="canonical" href="https://phyreman.github.io/clover/">
     <meta name="description" content="Browser-based Document Text Scanner">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" sizes="any" href="favicon.ico">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" sizes="any" href="images/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -17,8 +17,10 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="browserconfig.xml">
     <meta name="theme-color" content="#fff">
-    <script defer src="app.js"></script>
     <link rel="stylesheet" href="css/app.css"></link>
+    <script src="tesseract/tesseract.min.js"></script>
+    <script defer src="scripts/app.js"></script>
+    <!-- <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script> -->
   </head>
   <body>
     <!-- Four Leaf Clover and Light Bulb icons are from the Twitter Twemoji Project -->
@@ -30,6 +32,12 @@
         <textarea id="output"></textarea>
         <button id="save" value="default">Save</button>
         <button id="close">Discard</button>
+      </form>
+    </dialog>
+    <dialog id="wait">
+      <form method="dialog">
+        <h1>One moment, loading language libraries...</h1>
+        <progress id="load_meter" value="0" max="3">
       </form>
     </dialog>
   </body>
