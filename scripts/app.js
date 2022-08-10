@@ -124,15 +124,11 @@
 			// const { data: { text } } = await worker.recognize(canvas.toDataURL("image/png"));
 			cam.pause();
 			wait.showModal();
-			worker.recognize(canvas)
-			.then(data => {
-				wait.close();
-				const text = data.text;
-				if (!text) return;
-				output.textContent = text;
-				cam.pause();
-				output_dialog.showModal();
-			});
+			const { data: { text } } = await worker.recognize(canvas);
+			wait.close();
+			if (!text) return;
+			output.textContent = text;
+			output_dialog.showModal();
 		}
 	}
 
