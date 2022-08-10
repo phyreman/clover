@@ -27,9 +27,9 @@
 	const canDetect = !!window.TextDetector,
 				constraints = {
 					video: {
-						aspectRatio: 9/16,
+						aspectRatio: 16/9,
 						facingMode: "environment",
-						width: screen.width,
+						width: screen.height,
 						zoom: 1
 					},
 					audio: false
@@ -52,6 +52,8 @@
 		load_meter.value++;
 		await worker.initialize("eng");
 		wait.close();
+		load_meter.max = 1;
+		load_meter.value = 0;
 	}
 
 	// Connect to the camera
@@ -114,12 +116,26 @@
 		if (worker) {
 			// const { data: { text } } = await worker.recognize(cam);
 			ctx.drawImage(cam, 0, 0, canvas.width, canvas.height);
-			const { data: { text } } = await worker.recognize(canvas);
+			// const { data: { text } } = await worker.recognize(canvas);
 			// const { data: { text } } = await worker.recognize(canvas.toDataURL("image/png"));
-			if (!text) return;
-			output.textContent = text;
 			cam.pause();
-			output_dialog.showModal();
+			wait.showModal();
+			worker.recognize(canvas)
+			.progress(p => {
+				wait_status.textContent = p.status;
+				load_meter.value = p.progress;
+			})
+			.then(data => {
+				const text = data.text;
+				if (!text) return;
+				output.textContent = text;
+				cam.pause();
+				output_dialog.showModal();
+			})
+			.finally(() => {
+				wait.close();
+				cam.play();
+			});
 		}
 	}
 
