@@ -120,12 +120,11 @@
 		if (worker) {
 			// const { data: { text } } = await worker.recognize(cam);
 			ctx.drawImage(cam, 0, 0, cam.videoWidth, cam.videoHeight);
-			// const { data: { text } } = await worker.recognize(canvas);
-			// const { data: { text } } = await worker.recognize(canvas.toDataURL("image/png"));
 			cam.pause();
 			wait.showModal();
 			const { data: { text } } = await worker.recognize(canvas);
 			wait.close();
+			load_meter.value = 0;
 			if (!text) return;
 			output.textContent = text;
 			output_dialog.showModal();

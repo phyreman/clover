@@ -43,7 +43,11 @@ dialog::backdrop {
 
 #output {
   border-width: 0;
-  height: 75vh;
+  height: calc(75vh - 25px);
   resize: none;
   width: 95%;
+}
+
+#wait_status {
+  text-transform: uppercase;
 }
