@@ -39,7 +39,7 @@
 					workerPath: "tesseract/worker.min.js",
 					langPath: "tesseract/langs",
 					corePath: "tesseract/tesseract-core.wasm.js",
-					logger: m => console.log(m)
+					logger: m => alert(m)
 				});
 	let track;
 
