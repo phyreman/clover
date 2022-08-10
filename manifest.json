@@ -2,6 +2,12 @@
 	"name": "Clover",
 	"short_name": "Clover",
 	"description": "Browser-based Document Text Scanner",
+	"scope": "/clover/",
+	"start_url": "/clover/",
+	"theme_color": "#fff",
+	"background_color": "#fff",
+	"display": "standalone",
+	"categories": ["business", "utilities"],
 	"icons": [{
 		"src": "images/android-chrome-192x192.png",
 		"sizes": "192x192",
@@ -18,7 +24,7 @@
 		"type": "image/png",
 		"purpose": "maskable"
 	}],
-	"theme_color": "#fff",
-	"background_color": "#fff",
-	"display": "fullscreen"
+	"permissions": [
+    "camera"
+  ]
 }
