@@ -34,8 +34,8 @@
 					},
 					audio: false
 				},
-				detector = undefined,//canDetect && new TextDetector(),
-				worker = /*!*/canDetect && Tesseract.createWorker({
+				detector = canDetect && new TextDetector(),
+				worker = !canDetect && Tesseract.createWorker({
 					workerPath: "tesseract/worker.min.js",
 					langPath: "tesseract/langs",
 					corePath: "tesseract/tesseract-core.wasm.js",

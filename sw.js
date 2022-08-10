@@ -1,5 +1,5 @@
 const APP_PREFIX = "clover",
-      APP_VERSION = "0.1.4",
+      APP_VERSION = "0.1.5",
       CACHE_NAME = `${APP_PREFIX}_v${APP_VERSION}`;
 
 let APP_URLS = [
