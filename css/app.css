@@ -10,9 +10,6 @@ dialog {
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.5);
 }
-dialog:focus {
-  border-width: 0;
-}
 
 #update_btn {
   background-color: cadetblue;

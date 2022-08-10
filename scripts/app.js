@@ -57,6 +57,7 @@
 		wait.close();
 		load_meter.max = 1;
 		load_meter.value = 0;
+		ctx.scale(3, 3);
 	}
 
 	// Connect to the camera
@@ -90,8 +91,8 @@
 
 	cam.addEventListener("play", event => {
 		cam.style.marginLeft = `calc(50vw - ${cam.videoWidth / 2}px)`;
-		canvas.width = cam.videoWidth;
-		canvas.height = cam.videoHeight;
+		canvas.width = cam.videoWidth * 3;
+		canvas.height = cam.videoHeight * 3;
 	}, { once: true });
 
 	cam.addEventListener("click", scan);
@@ -118,7 +119,7 @@
 		}
 		if (worker) {
 			// const { data: { text } } = await worker.recognize(cam);
-			ctx.drawImage(cam, 0, 0, canvas.width, canvas.height);
+			ctx.drawImage(cam, 0, 0, cam.videoWidth, cam.videoHeight);
 			// const { data: { text } } = await worker.recognize(canvas);
 			// const { data: { text } } = await worker.recognize(canvas.toDataURL("image/png"));
 			cam.pause();
@@ -129,11 +130,8 @@
 				if (!text) return;
 				output.textContent = text;
 				cam.pause();
-				output_dialog.showModal();
-			})
-			.finally(() => {
 				wait.close();
-				cam.play();
+				output_dialog.showModal();
 			});
 		}
 	}
