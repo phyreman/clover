@@ -25,6 +25,11 @@
     <!-- Four Leaf Clover and Light Bulb icons are from the Twitter Twemoji Project -->
     <canvas id="canvas" hidden></canvas>
     <video id="cam"></video>
+    <div id="cropper" hidden></div>
+    <div id="crop_controls" hidden>
+      <button id="crop">Scan Cropped Image</button>
+      <button id="nocrop">Scan Whole Image</button>
+    </div>
     <button id="update_btn" hidden>A new version is available. Click here to update.</button>
     <button id="torch" class="light-off" disabled hidden></button>
     <dialog id="output_dialog">
@@ -37,7 +42,7 @@
     </dialog>
     <dialog id="wait">
       <form method="dialog">
-        <h1 id="wait_status">One moment, loading language libraries...</h1>
+        <h1 id="wait_status"></h1>
         <progress id="load_meter" value="0" max="2">
       </form>
     </dialog>

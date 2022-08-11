@@ -11,6 +11,26 @@ dialog::backdrop {
   background: rgba(0, 0, 0, 0.5);
 }
 
+#cropper {
+  background-color: black;
+  border: 2px solid white;
+  cursor: move;
+  height: 50vh;
+  left: 25vw;
+  mix-blend-mode: difference;
+  overflow: hidden;
+  position: absolute;
+  resize: both;
+  top: 25vh;
+  width: 50vw;
+}
+
+#crop_controls {
+  bottom: 5px;
+  left: calc(50vw - 137.5px);
+  position: absolute;
+}
+
 #update_btn {
   background-color: cadetblue;
   border: none;
