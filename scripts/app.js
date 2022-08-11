@@ -91,8 +91,8 @@
 
 	cam.addEventListener("play", event => {
 		cam.style.marginLeft = `calc(50vw - ${cam.videoWidth / 2}px)`;
-		canvas.width = cam.videoWidth;
-		canvas.height = cam.videoHeight;
+		canvas.width = cam.videoWidth * 3;
+		canvas.height = cam.videoHeight * 3;
 	}, { once: true });
 
 	cam.addEventListener("click", scan);
