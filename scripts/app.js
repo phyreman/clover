@@ -44,8 +44,10 @@
 	const constraints = {
 					video: {
 						aspectRatio: 16/9,
+						// aspectRatio: 9/16,
 						facingMode: "environment",
 						width: screen.height,
+						// height: screen.width,
 						zoom: 1
 					},
 					audio: false
