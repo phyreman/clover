@@ -136,6 +136,7 @@
 				output.textContent = texts.map(text => text.rawValue).join("\r\n");
 				output_dialog.showModal();
 			}).catch(err => alert(err));
+			canvas.width = canvas.width;
 			return;
 		}
 		ctx.drawImage(cam, 0, 0, canvas.width, canvas.height);
@@ -144,6 +145,7 @@
 		wait.close();
 		load_meter.value = 0;
 		if (!text) return;
+		canvas.width = canvas.width;
 		output.textContent = text;
 		output_dialog.showModal();
 	});
@@ -164,6 +166,7 @@
 		wait.close();
 		load_meter.value = 0;
 		if (!text) return;
+		canvas.width = canvas.width;
 		output.textContent = text;
 		output_dialog.showModal();
 	});
