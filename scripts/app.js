@@ -43,8 +43,7 @@
 
 	const constraints = {
 					video: {
-						// aspectRatio: 16/9,
-						aspectRatio: 9/16,
+						aspectRatio: 16/9,
 						facingMode: "environment",
 						// width: screen.height,
 						height: screen.width,
@@ -137,6 +136,7 @@
 				output_dialog.showModal();
 			}).catch(err => alert(err));
 			canvas.width = canvas.width;
+			canvas.height = canvas.height;
 			return;
 		}
 		ctx.drawImage(cam, 0, 0, canvas.width, canvas.height);
@@ -146,6 +146,7 @@
 		load_meter.value = 0;
 		if (!text) return;
 		canvas.width = canvas.width;
+		canvas.height = canvas.height;
 		output.textContent = text;
 		output_dialog.showModal();
 	});
@@ -167,6 +168,7 @@
 		load_meter.value = 0;
 		if (!text) return;
 		canvas.width = canvas.width;
+		canvas.height = canvas.height;
 		output.textContent = text;
 		output_dialog.showModal();
 	});
